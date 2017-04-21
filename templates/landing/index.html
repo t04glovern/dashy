@@ -34,11 +34,16 @@
         	<div class="text-vertical-center">
                 <h1>Dashy</h1>
                 <h4>Modern Dashboard for Modern Services</h4>
-                <img src="{{ url_for('static', filename='custom/landing/img/dashboard-icon.png') }}" style="width:15%;"/>
-                <br/>
                 <div class="row">
-                    <div class="col-sm-5"></div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <img src="{{ url_for('static', filename='custom/landing/img/dashboard-icon.png') }}" style="width:100%;"/>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
                         <form role="form" action="/admin/login" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control input-lg input-dark" name="username" placeholder="Username">
@@ -49,7 +54,7 @@
                             <button type="submit" class="btn btn-dark btn-lg">Login</button>
                         </form>
                     </div>
-                    <div class="col-sm-5"></div>
+                    <div class="col-sm-4"></div>
                 </div>
         	</div>
         </div>
