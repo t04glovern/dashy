@@ -11,6 +11,9 @@
 
     <title>Dashy - A Modern Dashboard for Modern Services</title>
 
+    <!-- Favicon load -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
     <!-- Bootstrap Core CSS -->
     <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -30,6 +33,8 @@
         <div style="display:table-row;">
         	<div class="text-vertical-center">
                 <h1>Dashy</h1>
+                <h4>Modern Dashboard for Modern Services</h4>
+                <img src="{{ url_for('static', filename='custom/landing/img/dashboard-icon.png') }}" style="width:15%;"/>
                 <br/>
                 <div class="row">
                     <div class="col-sm-5"></div>
