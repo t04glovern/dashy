@@ -5,6 +5,11 @@ from hashlib import sha256
 # Flask_MongoDB imports
 from mongo import mongo
 
+## Flask_REST API imports
+from flask_restful import Api
+from api.resources.data import Data
+
+
 '''
 Init
 '''
@@ -18,6 +23,7 @@ app.config.from_object('config')
 
 # Init the mongo flask instance
 mongo.init_app(app)
+
 
 '''
 Utilities
@@ -80,6 +86,14 @@ def databases():
 @login_required
 def servers():
     return render_template("admin/servers.html")
+
+
+'''
+API Definitions
+'''
+api = Api(app)
+
+api.add_resource(Data, "/api/v1/data", "/api/v1/data/")
 
 
 if __name__ == '__main__':
