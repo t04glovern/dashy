@@ -3,15 +3,13 @@
 {% block head %}
 
     <!-- DataTables CSS -->
-    <link href="{{ url_for('static', filename='vendor/datatables-plugins/css/dataTables.bootstrap.css') }}" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
-    <link href="{{ url_for('static', filename='vendor/datatables-responsive/dataTables.responsive.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/datatables/css/dataTables.bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/datatables/css/dataTables.responsive.css') }}" rel="stylesheet">
 
     <!-- DataTables JavaScript -->
     <script src="{{ url_for('static', filename='vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/datatables-plugins/js/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/datatables/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/datatables/js/dataTables.responsive.js') }}"></script>
 
     <!-- Custom JavaScript -->
     <script type="text/javascript">
@@ -22,10 +20,8 @@
             "columns": [
                 { "data": "timestamp" },
                 { "data": "temperatureC" },
-                { "data": "temperatureF" },
                 { "data": "humidity" },
                 { "data": "heatIndexC" },
-                { "data": "heatIndexF" },
                 { "defaultContent": '<button type=\"button\" class=\"btn btn-danger btn-xs\">Delete</button>' }
             ],
             "responsive": true,
@@ -57,7 +53,7 @@
 
                 <!-- .panel-heading -->
                 <div class="panel-heading">
-                    Script Inventory
+                    Living Room Temperature & Humidity
                 </div>
                 <!-- .panel-heading -->
 
@@ -69,11 +65,9 @@
                         <thead>
                             <tr>
                                 <th>Timestamp</th>
-                                <th>Temperature C</th>
-                                <th>Temperature F</th>
-                                <th>Humidity</th>
-                                <th>Heat Index C</th>
-                                <th>Heat Index F</th>
+                                <th>Temperature (&#8451)</th>
+                                <th>Humidity (%)</th>
+                                <th>Heat Index (&#8451)</th>
                                 <th>
                                 </th>
                             </tr>
