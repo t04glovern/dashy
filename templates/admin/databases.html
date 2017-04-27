@@ -3,34 +3,32 @@
 {% block head %}
 
     <!-- DataTables CSS -->
-    <link href="{{ url_for('static', filename='vendor/datatables/css/dataTables.bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='vendor/datatables/css/dataTables.responsive.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/datatables/datatables.min.css') }}" rel="stylesheet">
 
     <!-- DataTables JavaScript -->
-    <script src="{{ url_for('static', filename='vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/datatables/js/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/datatables/js/dataTables.responsive.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/datatables/datatables.min.js') }}"></script>
 
     <!-- Custom JavaScript -->
     <script type="text/javascript">
+
+    var table;
+
     $(document).ready(function() {
+
         table = $('#temp-moisture-datatable').DataTable({
-            "processing": true,
             "ajax": "/api/v1/data",
             "columns": [
                 { "data": "timestamp" },
                 { "data": "temperatureC" },
                 { "data": "humidity" },
-                { "data": "heatIndexC" },
-                { "defaultContent": '<button type=\"button\" class=\"btn btn-danger btn-xs\">Delete</button>' }
+                { "data": "heatIndexC" }
+            ],
+            dom: 'Bfrtip',
+            "buttons": [
+                'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5', 'print'
             ],
             "responsive": true,
             "order": [[0, "desc" ]]
-        });
-
-        $('#temp-moisture-datatable').on('click', 'button', function() {
-            var data = table.row($(this).parents('tr')).data();
-            alert("We will be deleting the following data soon: " + data.timestamp);
         });
     });
     </script>
@@ -68,8 +66,6 @@
                                 <th>Temperature (&#8451)</th>
                                 <th>Humidity (%)</th>
                                 <th>Heat Index (&#8451)</th>
-                                <th>
-                                </th>
                             </tr>
                         </thead>
                     </table>
