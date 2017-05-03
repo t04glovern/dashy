@@ -1,9 +1,53 @@
 {% extends "admin/base.html" %}
 
+{% block head %}
+
+    <!-- Custom JavaScript -->
+    <script type="text/javascript">
+
+    $.getJSON('http://192.168.188.230:8080/state', get_status);
+
+    function get_status(data, t, j) {
+        if (!data.success) return;
+        for (var host in data.content) {
+            $('#server-list').append("<p>" + host + ' ' + data.content[host].plugin_output + "</p>");
+        }
+    }
+
+    </script>
+
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">Servers</h2>
         </div>
     </div>
+
+    <!-- .row -->
+    <div class="row">
+        <!-- .col-lg-12 -->
+        <div class="col-lg-12">
+            <!-- .panel-default -->
+            <div class="panel panel-default">
+
+                <!-- .panel-heading -->
+                <div class="panel-heading">
+                    Server Status
+                </div>
+                <!-- .panel-heading -->
+
+                <!-- .panel-body -->
+                <div id="server-list" class="panel-body">
+
+                </div>
+                <!-- .panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
 {% endblock %}
