@@ -5,12 +5,33 @@
     <!-- Custom JavaScript -->
     <script type="text/javascript">
 
-    $.getJSON('http://192.168.188.230:8080/state', get_status);
+    $.getJSON('http://nathanglover.com:8080/state', get_status);
 
     function get_status(data, t, j) {
         if (!data.success) return;
         for (var host in data.content) {
-            $('#server-list').append("<p>" + host + ' ' + data.content[host].plugin_output + "</p>");
+
+            var html = '';
+            html +=
+                "<div class=\"panel panel-default\">" +
+                    "<div class=\"panel-heading\">" + host + "</div>" +
+                        "<div class=\"panel-body\">";
+
+            for (var service in data.content[host].services) {
+                html +=
+                            "<div class=\"row\">" +
+                                "<div class=\"col-md-3\"><h5>" + service + "</h5></div>" +
+                                "<div class=\"col-md-9\">" + data.content[host].services[service].plugin_output + "</div>" +
+                            "</div>";
+            }
+
+            html +=
+                        "</div>" +
+                    "</div>" +
+                "</div>";
+
+            console.log(html);
+            $('#server-list').append(html);
         }
     }
 
