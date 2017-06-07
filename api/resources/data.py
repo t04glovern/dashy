@@ -6,10 +6,28 @@ from mongo import mongo
 
 class Data(Resource):
 
-    def get(selfs):
-        data = []
-        cursor = mongo.db['data-temp-moist'].find({}, {"_id": 0, "update_time": 0})
-        for entry in cursor:
-            data.append(entry)
+    def get(self):
 
-        return jsonify({"status": "ok", "data": data})
+        data_pipeline = [
+            {
+                "$sort":
+                    {
+                        "_id": -1
+                    }
+            },
+            {
+                "$limit": 100
+            },
+            {
+                "$project":
+                    {
+                        "_id": 0
+                    }
+            }
+        ]
+
+        data_info = list(mongo.db['data-temp-moist'].aggregate(pipeline=data_pipeline))
+        if data_info:
+            return jsonify({"status": "ok", "data": data_info})
+        else:
+            return {"response": "no data found"}
