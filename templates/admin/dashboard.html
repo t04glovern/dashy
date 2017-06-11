@@ -1,10 +1,43 @@
 {% extends "admin/base.html" %}
 
+{% block head %}
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='custom/dashboard/css/dashboard.css') }}" rel="stylesheet">
+
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">Dashboard</h2>
-            <img src="http://nathanglover.com:5000/video_feed" alt="Video Feed">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Video Feed 01</div>
+                <div class="panel-body">
+                    <img src="http://nathanglover.com:5000/video_feed" alt="Video Feed" class="img-responsive center-block">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Video Feed 02</div>
+                <div class="panel-body">
+                    <img src="{{ url_for('static', filename='custom/dashboard/img/video-offline.png') }}" alt="Video Feed" class="img-responsive center-block">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Video Feed 03</div>
+                <div class="panel-body">
+                    <img src="{{ url_for('static', filename='custom/dashboard/img/video-offline.png') }}" alt="Video Feed" class="img-responsive center-block">
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
