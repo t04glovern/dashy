@@ -2,12 +2,13 @@ from flask import Flask, render_template, request, redirect, session, url_for
 from functools import wraps
 from hashlib import sha256
 
-# Flask_MongoDB imports
+## Flask_MongoDB imports
 from mongo import mongo
 
 ## Flask_REST API imports
 from flask_restful import Api
 from api.resources.data import Data
+from api.resources.pubg import PUBG
 
 
 '''
@@ -94,6 +95,7 @@ API Definitions
 api = Api(app)
 
 api.add_resource(Data, "/api/v1/data", "/api/v1/data/")
+api.add_resource(PUBG, "/api/v1/pubg", "/api/v1/pubg/")
 
 
 if __name__ == '__main__':
