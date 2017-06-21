@@ -94,7 +94,7 @@ def servers():
 @app.route("/ajax/nagios", methods=['GET'])
 @login_required
 def nagios():
-    url = "http://nathanglover.com:8080/state"
+    url = "http://192.168.188.230:8080/state"
     headers = {
         'content-type': "application/json"
     }
