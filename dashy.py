@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 from functools import wraps
 from hashlib import sha256
+import requests
+import json
 
 ## Flask_MongoDB imports
 from mongo import mongo
@@ -87,6 +89,17 @@ def databases():
 @login_required
 def servers():
     return render_template("admin/servers.html")
+
+
+@app.route("/ajax/nagios", methods=['GET'])
+@login_required
+def nagios():
+    url = "http://nathanglover.com:8080/state"
+    headers = {
+        'content-type': "application/json"
+    }
+    response = requests.request("GET", url, headers=headers)
+    return response.text
 
 
 '''

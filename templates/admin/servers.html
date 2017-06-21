@@ -5,7 +5,7 @@
     <!-- Custom JavaScript -->
     <script type="text/javascript">
 
-    $.getJSON('http://nathanglover.com:8080/state', get_status);
+    $.getJSON('/ajax/nagios', get_status);
 
     function get_status(data, t, j) {
         if (!data.success) return;
@@ -30,7 +30,6 @@
                     "</div>" +
                 "</div>";
 
-            console.log(html);
             $('#server-list').append(html);
         }
     }
