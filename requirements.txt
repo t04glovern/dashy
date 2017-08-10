@@ -1,5 +1,5 @@
 Flask==0.12.2
-Flask-PyMongo==0.4.1
-Flask-RESTful==0.3.5
+Flask-PyMongo==0.5.1
+Flask-RESTful==0.3.6
 gunicorn==19.7.1
-requests
+requests==2.18.3
